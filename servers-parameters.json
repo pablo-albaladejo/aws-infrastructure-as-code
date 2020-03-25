@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "AWS-IaC"
+    },
+    {
+        "ParameterKey": "KeyName",
+        "ParameterValue": "AWS-IaC-WebServer"
+    }
+]

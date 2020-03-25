@@ -1,10 +1,10 @@
 # udacity-aws-infrastructure-as-code
 https://review.udacity.com/#!/rubrics/2556/view
 
-
-./create.sh udagram network.yml parameters.json
-./update.sh udagram network.yml parameters.json
+#Network
+./create.sh udagram-network network.yml network-parameters.json
+./update.sh udagram-network network.yml network-parameters.json
 
 #Servers
-./create.sh udagram servers.yml parameters.json
-./update.sh udagram servers.yml parameters.json
+./create.sh udagram servers.yml servers-parameters.json
+./update.sh udagram servers.yml servers-parameters.json8
