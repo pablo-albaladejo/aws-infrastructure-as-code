@@ -4,7 +4,7 @@
         "ParameterValue": "AWS-IaC"
     },
     {
-        "ParameterKey": "KeyName",
+        "ParameterKey": "WebServerKeyPair",
         "ParameterValue": "AWS-IaC-WebServer"
     }
 ]
