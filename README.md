@@ -13,3 +13,9 @@ https://review.udacity.com/#!/rubrics/2556/view
 `./update.sh AWS-IaC-Servers ./servers/infra.yml ./servers/parameters.json`
 
 `./delete.sh AWS-IaC-Servers`
+
+# Bastion
+`chmod 400 ./AWS-IaC-BastionHost.pem`
+`scp -i ./AWS-IaC-BastionHost.pem ./AWS-IaC-WebServer.pem ubuntu@<bastion-public-ip>:/home/ubuntu`
+`ssh -i ./AWS-IaC-BastionHost.pem ubuntu@<bastion-public-ip>`
+`ssh i ./AWS-IaC-WebServer.pem ubuntu@<server-private-ip>`

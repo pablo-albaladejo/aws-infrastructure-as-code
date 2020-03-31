@@ -6,5 +6,9 @@
     {
         "ParameterKey": "WebServerKeyPair",
         "ParameterValue": "AWS-IaC-WebServer"
+    },
+    {
+        "ParameterKey": "BastionHostKeyPair",
+        "ParameterValue": "AWS-IaC-BastionHost"
     }
 ]

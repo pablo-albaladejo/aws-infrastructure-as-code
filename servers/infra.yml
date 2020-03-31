@@ -7,9 +7,13 @@ Parameters:
     Type: String
 
   WebServerKeyPair:
-    Description: A key pair to access to the web server
+    Description: A key pair to access to the private web server
     Type: String
 
+  BastionHostKeyPair:
+    Description: A key pair to access to the bastion host
+    Type: String
+    
 Resources:
   #WebServer
   WebServerSecGroup:
@@ -129,6 +133,29 @@ Resources:
       ListenerArn: !Ref "LBListener"
       Priority: 1
 
+  BastionHostSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable SSH access via port 22"
+      VpcId:
+        Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: "0.0.0.0/0"
+
+  BastionHostInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref BastionHostSecurityGroup
+      KeyName: !Ref BastionHostKeyPair
+      ImageId: ami-06d51e91cea0dac8d
+      SubnetId:
+        Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
+
 Outputs:
   URL:
     Description: The URL of the website
@@ -139,3 +166,9 @@ Outputs:
           - Fn::GetAtt:
               - WebAppLB
               - DNSName
+  BastionHostIP:
+    Description: "Public IP address of the BastionHost instance"
+    Value:
+      "Fn::GetAtt":
+        - BastionHostInstance
+        - PublicIp
