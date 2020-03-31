@@ -1,5 +1,7 @@
 https://review.udacity.com/#!/rubrics/2556/view
 
+![diagram](./aws-diagram.png)
+
 # Network
 `./create.sh AWS-IaC-Network ./network/infra.yml ./network/parameters.json`
 
