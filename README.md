@@ -17,9 +17,7 @@ This needs to be done in an automated fashion so that the infrastructure can be 
 ## Instructions
 
 **Prerequisites:**  
-Two key pairs should be registred at aws:  
-1. _AWS-IaC-WebServer_ will be used to internaly access from the _BastionHost_ to the _WebServers_  
-2. _AWS-IaC-BastionHost_ will be used to externaly access from the _Internet_ to the _BastionHost_  
+A key pairs should be registred at aws: _AWS-IaC-BastionHost_ will be used to externaly access from the _Internet_ to the _BastionHost_  
 
 First step is to create the network infrastrucure by running:  
 `./create.sh AWS-IaC-Network ./network/infra.yml ./network/parameters.json`
@@ -62,7 +60,6 @@ This last step is optional and the stack could be deleted once the debugging is 
 
 ```
 chmod 400 ./AWS-IaC-BastionHost.pem
-scp -i ./AWS-IaC-BastionHost.pem ./AWS-IaC-WebServer.pem ubuntu@<bastion-public-ip>:/home/ubuntu
 ssh -i ./AWS-IaC-BastionHost.pem ubuntu@<bastion-public-ip>
-ssh i ./AWS-IaC-WebServer.pem ubuntu@<server-private-ip>
+ssh ubuntu@<server-private-ip>
 ```

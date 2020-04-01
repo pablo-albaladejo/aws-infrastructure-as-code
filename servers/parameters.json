@@ -2,9 +2,5 @@
     {
         "ParameterKey": "EnvironmentName",
         "ParameterValue": "AWS-IaC"
-    },
-    {
-        "ParameterKey": "WebServerKeyPair",
-        "ParameterValue": "AWS-IaC-WebServer"
     }
 ]
